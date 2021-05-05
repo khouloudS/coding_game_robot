@@ -11,12 +11,14 @@ class Player
     string cmd_ret="";
     public int get_lower(int[] boxes, int[] target, int clawPos){
         int min_pos=boxes.Length;
+        int next_pos=0;
         for(int i=0; i<boxes.Length; i++){
-            if(boxes[i]<target[i] && Math.abs(clawPos-i)<min_pos){
-                min_pos=i;
+            if(boxes[i]<target[i] && Math.Abs(clawPos-i)<min_pos){
+                min_pos=Math.Abs(clawPos-i);
+                next_pos=i;
             }
         }
-        return min_pos;
+        return next_pos;
     }
 
     public bool verification(int[] boxes, int[] target ){
@@ -31,12 +33,14 @@ class Player
     public int get_higher(int[] boxes, int[] target,int clawPos)
     {
         int min_pos=boxes.Length;
+        int next_pos=0;
         for(int i=0; i<boxes.Length; i++){
-            if(boxes[i]>target[i] && Math.abs(clawPos-i)<min_pos){
-                min_pos=i;
+            if(boxes[i]>target[i] && Math.Abs(clawPos-i)<min_pos){
+                min_pos=Math.Abs(clawPos-i);
+                next_pos=i;
             }
         }
-        return min_pos;
+        return next_pos;
     }
 
     public int move(int start, int end, bool boxInClaw){
