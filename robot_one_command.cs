@@ -28,35 +28,37 @@ class Player
             target[i]=target[i]+1;
         }
         int min_pos=boxes.Length;
+        int next_pos=0;
 
         if(boxInClaw){
             
                 for(int i=0; i<boxes.Length; i++){
                     if(boxes[i]<target[i] && Math.Abs(clawPos-i)<min_pos){
-                        min_pos=i;
+                        min_pos=Math.Abs(clawPos-i);
+                        next_pos=i;
                     }
                 }
-                if(clawPos<min_pos){
+                if(clawPos<next_pos){
                     return "RIGHT";
                 }
-                else if(clawPos>min_pos){
+                else if(clawPos>next_pos){
                     return "LEFT";
                 }
                 else{return "PLACE";}
 
         }
         else{
-                    min_pos=boxes.Length;
                     for(int i=0; i<boxes.Length; i++){
                     if(boxes[i]>target[i] && Math.Abs(clawPos-i)<min_pos){
-                        min_pos=i;
+                        min_pos=Math.Abs(clawPos-i);
+                        next_pos=i;
                     }
 
                 }
-                if(clawPos<min_pos){
+                if(clawPos<next_pos){
                     return "RIGHT";
                 }
-                else if(clawPos>min_pos){
+                else if(clawPos>next_pos){
                     return "LEFT";
                 }
                 else{return "PICK";}
